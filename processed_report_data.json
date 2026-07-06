@@ -1,0 +1,48 @@
+[
+    {
+        "chunk_id": 0,
+        "extraction": {
+            "themes_distribution": {
+                "education": 18,
+                "health": 15,
+                "inequality": 45,
+                "economy": 32,
+                "gender": 12,
+                "climate": 2,
+                "employment": 14
+            },
+            "key_strengths": [
+                "National HDI has steadily improved from 0.736 in 1995 to 0.758 in 2003.",
+                "High adult literacy and combined enrollment rates relative to global peers.",
+                "Strong human development outcomes in leading Luzon provinces like Benguet and Cavite.",
+                "Active civil society and indigenous mechanisms pushing for grassroots peace-building."
+            ],
+            "key_challenges": [
+                "Protracted Moro and communist insurgencies causing massive economic and human losses.",
+                "Severe regional disparities, with ARMM provinces lagging in all development metrics.",
+                "High levels of internal displacement (IDPs) and loss of cultural identity.",
+                "Widespread latent anti-Muslim prejudice among the mainstream population."
+            ],
+            "numerical_indicators": {
+                "HDI_value": 0.758,
+                "HDI_rank": 84,
+                "life_expectancy_years": 69.2,
+                "expected_years_of_schooling": 11.5,
+                "gni_per_capita": 39639.0,
+                "population": 84.3
+            },
+            "demographic_trends": [
+                {"year": 1985, "metric_name": "National Poverty Incidence (%)", "value": 40.9},
+                {"year": 1997, "metric_name": "National Poverty Incidence (%)", "value": 25.1},
+                {"year": 2000, "metric_name": "National Poverty Incidence (%)", "value": 27.5},
+                {"year": 2003, "metric_name": "National Poverty Incidence (%)", "value": 25.7}
+            ]
+        },
+        "evaluation": {
+            "consistency_score": 10,
+            "completeness_score": 9,
+            "factual_alignment_score": 10,
+            "critique": "Extraction adhered perfectly to the requested schema. Extracted metrics map perfectly to time-series trend requirements."
+        }
+    }
+]
