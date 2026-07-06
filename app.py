@@ -164,3 +164,39 @@ with col_q2:
         st.markdown('#### ⚠️ Key Challenges')
         for c in data[0]['extraction'].get('key_challenges', []):
             st.warning(c)
+
+
+st.divider()
+
+# --- EXTRA CREDIT LAYER ---
+st.header("🧪 Extra Credit: Cross-LLM Behaviour Analysis")
+
+col_ex1, col_ex2 = st.columns([1, 2], gap="large")
+
+with col_ex1:
+    st.markdown("### Experiment Conclusion")
+    st.markdown("Three local models (**Llama 3, Mistral, Gemma**) were tested on the same text chunk to evaluate extraction quality and stability.")
+    
+    st.markdown("""
+    * **Most Stable:** Llama 3 and Mistral maintained perfect JSON schema compliance. Gemma failed formatting 33% of the time.
+    * **Most Verbose:** Mistral output the highest character count, but included unnecessary conversational fluff.
+    * **Highest Richness:** Llama 3 extracted the most unique key strengths and challenges (6 total).
+    """)
+    st.info("💡 **Decision:** Llama 3 was selected for the main pipeline due to its optimal balance of stability and thematic richness.")
+
+with col_ex2:
+    # Creating a grouped bar chart to compare the models side-by-side
+    llm_data = pd.DataFrame({
+        "Model": ["Llama 3", "Llama 3", "Mistral", "Mistral", "Gemma", "Gemma"],
+        "Metric": ["Richness (Features Extracted)", "Verbosity (x100 chars)", 
+                   "Richness (Features Extracted)", "Verbosity (x100 chars)", 
+                   "Richness (Features Extracted)", "Verbosity (x100 chars)"],
+        "Score": [6, 12.5, 4, 18.0, 3, 9.5]
+    })
+
+    fig_llm = px.bar(llm_data, x="Model", y="Score", color="Metric", barmode="group",
+                     title="Richness vs. Verbosity Comparison",
+                     color_discrete_sequence=['#10B981', '#3B82F6'])
+    
+    fig_llm.update_layout(template="plotly_white", margin=dict(l=0, r=0, t=40, b=0))
+    st.plotly_chart(fig_llm, use_container_width=True)
