@@ -26,18 +26,20 @@ st.markdown("**Country Focus:** Philippines (2005) | **Data Extraction:** Llama 
 st.divider()
 
 # --- Load Data ---
-st.markdown("""
-<div style="display: flex; justify-content: center;">
-    <div style="text-align: left; background-color: #F1F5F9; padding: 15px; border-radius: 10px; width: fit-content;">
-<pre><code style="font-weight: bold;">@st.cache_data
+# --- Load Data (Safe Version) ---
+@st.cache_data
 def load_data():
-    with open('processed_report_data.json', 'r') as f:
-        return json.load(f)
+    try:
+        with open('processed_report_data.json', 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        st.error("🚨 Error: Could not find 'processed_report_data.json'. Please check your GitHub repository and ensure the file is named exactly like this.")
+        st.stop()
+    except json.JSONDecodeError:
+        st.error("🚨 Error: The JSON file is corrupted or formatted incorrectly.")
+        st.stop()
 
-data = load_data()</code></pre>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+data = load_data()
 
 # --- Data Aggregation ---
 themes = {"education": 0, "health": 0, "inequality": 0, "economy": 0, "gender": 0, "climate": 0, "employment": 0}
