@@ -21,24 +21,23 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- Header ---
-st.markdown("""
-<div style="display: flex; justify-content: center; align-items: center;">
-    <div style="font-size: 2.8rem; margin-right: 12px;">🌍</div>
-    <div>
-        <h1 style="margin: 0; padding: 0; font-weight: bold; line-height: 1.2;">UN Human Development Report Intelligence</h1>
-        <p style="margin: 0; padding: 0; font-weight: bold; font-size: 1.1rem; margin-top: 5px; color: #334155;">Country Focus: Philippines (2005) | Data Extraction: Llama 3 | Evaluation: Mistral</p>
-    </div>
-</div>
-<br>
-""", unsafe_allow_html=True)
+st.title("🌍 UN Human Development Report Intelligence")
+st.markdown("**Country Focus:** Philippines (2005) | **Data Extraction:** Llama 3 | **Evaluation:** Mistral")
+st.divider()
 
 # --- Load Data ---
-@st.cache_data
+st.markdown("""
+<div style="display: flex; justify-content: center;">
+    <div style="text-align: left; background-color: #F1F5F9; padding: 15px; border-radius: 10px; width: fit-content;">
+<pre><code style="font-weight: bold;">@st.cache_data
 def load_data():
     with open('processed_report_data.json', 'r') as f:
         return json.load(f)
 
-data = load_data()
+data = load_data()</code></pre>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # --- Data Aggregation ---
 themes = {"education": 0, "health": 0, "inequality": 0, "economy": 0, "gender": 0, "climate": 0, "employment": 0}
