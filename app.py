@@ -8,7 +8,6 @@ import json
 st.set_page_config(page_title="UN HDR Intelligence", page_icon="🌍", layout="wide", initial_sidebar_state="collapsed")
 
 # --- Custom CSS for Styling ---
-# --- Custom CSS for Styling ---
 st.markdown("""
 <style>
     /* Tighten top padding */
@@ -202,7 +201,7 @@ with col_q2:
 st.divider()
 
 # --- EXTRA CREDIT LAYER ---
-st.header("🧪 Extra Credit: Cross-LLM Behaviour Analysis")
+st.header("🧪 Cross-LLM Behaviour Analysis")
 
 col_ex1, col_ex2 = st.columns([1, 2], gap="large")
 
