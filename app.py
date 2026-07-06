@@ -8,13 +8,28 @@ import json
 st.set_page_config(page_title="UN HDR Intelligence", page_icon="🌍", layout="wide", initial_sidebar_state="collapsed")
 
 # --- Custom CSS for Styling ---
+# --- Custom CSS for Styling ---
 st.markdown("""
 <style>
     /* Tighten top padding */
     .block-container { padding-top: 2rem; padding-bottom: 2rem; }
-    /* Style the metric containers */
-    [data-testid="stMetricValue"] { font-size: 2.2rem; color: #1E3A8A; }
-    [data-testid="stMetricLabel"] { font-weight: bold; color: #475569; }
+    
+    /* Center and Bold the Metric Values (The Numbers) */
+    [data-testid="stMetricValue"] { 
+        font-size: 2.2rem; 
+        color: #1E3A8A; 
+        text-align: center; 
+        font-weight: bold; 
+    }
+    
+    /* Center and Bold the Metric Labels (The Titles) */
+    [data-testid="stMetricLabel"] { 
+        color: #475569; 
+        text-align: center; 
+        font-weight: bold; 
+        width: 100%;
+    }
+    
     /* Custom subheaders */
     h3 { color: #0F172A; border-bottom: 2px solid #E2E8F0; padding-bottom: 5px; margin-bottom: 15px; }
 </style>
