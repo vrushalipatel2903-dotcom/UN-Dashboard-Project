@@ -22,7 +22,7 @@ st.markdown("""
 
 # --- Header ---
 st.title("🌍 UN Human Development Report Intelligence")
-st.markdown("**Country Focus:** Philippines (2005) | **Data Extraction:** Llama 3 | **Evaluation:** Mistral")
+<p style="margin: 0; padding: 0; font-weight: bold; font-size: 1.1rem; margin-top: 5px; color: #334155;">Country Focus: Philippines (2005) | Data Extraction: Llama 3 | Evaluation: Mistral</p>
 st.divider()
 
 # --- Load Data ---
