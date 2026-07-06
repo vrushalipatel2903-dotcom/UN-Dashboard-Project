@@ -81,29 +81,25 @@ life_val = indicators.get('life_expectancy_years', 'N/A')
 gni_val = indicators.get('gni_per_capita', 'N/A')
 gni_formatted = f"${gni_val:,.0f}" if isinstance(gni_val, (int, float)) else gni_val
 
+# Pure HTML with ZERO indentation so Streamlit doesn't turn it into a code block
 st.markdown(f"""
 <div style="display: flex; justify-content: space-between; text-align: center; margin-bottom: 30px; gap: 15px;">
-    
-    <div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
-        <p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">Human Development Index</p>
-        <h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{hdi_val}</h2>
-    </div>
-    
-    <div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
-        <p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">Global Rank</p>
-        <h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{rank_val}</h2>
-    </div>
-    
-    <div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
-        <p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">Life Expectancy (Years)</p>
-        <h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{life_val}</h2>
-    </div>
-    
-    <div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
-        <p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">GNI per Capita</p>
-        <h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{gni_formatted}</h2>
-    </div>
-    
+<div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
+<p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">Human Development Index</p>
+<h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{hdi_val}</h2>
+</div>
+<div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
+<p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">Global Rank</p>
+<h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{rank_val}</h2>
+</div>
+<div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
+<p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">Life Expectancy (Years)</p>
+<h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{life_val}</h2>
+</div>
+<div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
+<p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">GNI per Capita</p>
+<h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{gni_formatted}</h2>
+</div>
 </div>
 """, unsafe_allow_html=True)
 
