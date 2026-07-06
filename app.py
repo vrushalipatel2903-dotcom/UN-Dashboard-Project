@@ -8,30 +8,31 @@ import json
 st.set_page_config(page_title="UN HDR Intelligence", page_icon="🌍", layout="wide", initial_sidebar_state="collapsed")
 
 # --- Custom CSS for Styling ---
-st.markdown(f"""
-<div style="display: flex; justify-content: space-between; text-align: center; margin-bottom: 30px; gap: 15px;">
+# --- Custom CSS for Styling ---
+st.markdown("""
+<style>
+    /* Tighten top padding */
+    .block-container { padding-top: 2rem; padding-bottom: 2rem; }
     
-    <div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
-        <p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">Human Development Index</p>
-        <h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{hdi_val}</h2>
-    </div>
+    /* Center and Bold the Metric Values (The Numbers) */
+    [data-testid="stMetricValue"] { 
+        font-size: 2.2rem; 
+        color: #1E3A8A; 
+        text-align: center; 
+        font-weight: bold; 
+    }
     
-    <div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
-        <p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">Global Rank</p>
-        <h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{rank_val}</h2>
-    </div>
+    /* Center and Bold the Metric Labels (The Titles) */
+    [data-testid="stMetricLabel"] { 
+        color: #475569; 
+        text-align: center; 
+        font-weight: bold; 
+        width: 100%;
+    }
     
-    <div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
-        <p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">Life Expectancy (Years)</p>
-        <h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{life_val}</h2>
-    </div>
-    
-    <div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
-        <p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">GNI per Capita</p>
-        <h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{gni_formatted}</h2>
-    </div>
-    
-</div>
+    /* Custom subheaders */
+    h3 { color: #0F172A; border-bottom: 2px solid #E2E8F0; padding-bottom: 5px; margin-bottom: 15px; }
+</style>
 """, unsafe_allow_html=True)
 
 # --- Header ---
@@ -74,23 +75,37 @@ for item in data:
 # --- KPI Cards Layer ---
 indicators = data[0]['extraction'].get('numerical_indicators', {})
 
-col_k1, col_k2, col_k3, col_k4 = st.columns(4)
-with col_k1:
-    hdi_val = indicators.get('HDI_value', 'N/A')
-    st.metric(label="Human Development Index", value=hdi_val)
-with col_k2:
-    rank_val = indicators.get('HDI_rank', 'N/A')
-    st.metric(label="Global Rank", value=rank_val)
-with col_k3:
-    life_val = indicators.get('life_expectancy_years', 'N/A')
-    st.metric(label="Life Expectancy (Years)", value=life_val)
-with col_k4:
-    gni_val = indicators.get('gni_per_capita', 'N/A')
-    # Format GNI to look like currency if it's a number
-    gni_formatted = f"${gni_val:,.0f}" if isinstance(gni_val, (int, float)) else gni_val
-    st.metric(label="GNI per Capita", value=gni_formatted)
+hdi_val = indicators.get('HDI_value', 'N/A')
+rank_val = indicators.get('HDI_rank', 'N/A')
+life_val = indicators.get('life_expectancy_years', 'N/A')
+gni_val = indicators.get('gni_per_capita', 'N/A')
+gni_formatted = f"${gni_val:,.0f}" if isinstance(gni_val, (int, float)) else gni_val
 
-st.markdown("<br>", unsafe_allow_html=True)
+st.markdown(f"""
+<div style="display: flex; justify-content: space-between; text-align: center; margin-bottom: 30px; gap: 15px;">
+    
+    <div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
+        <p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">Human Development Index</p>
+        <h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{hdi_val}</h2>
+    </div>
+    
+    <div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
+        <p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">Global Rank</p>
+        <h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{rank_val}</h2>
+    </div>
+    
+    <div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
+        <p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">Life Expectancy (Years)</p>
+        <h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{life_val}</h2>
+    </div>
+    
+    <div style="flex: 1; background-color: #ffffff; padding: 20px 10px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;">
+        <p style="color: #475569; font-size: 1.05rem; font-weight: bold; margin: 0; padding-bottom: 5px;">GNI per Capita</p>
+        <h2 style="color: #1E3A8A; font-size: 2.2rem; font-weight: bold; margin: 0;">{gni_formatted}</h2>
+    </div>
+    
+</div>
+""", unsafe_allow_html=True)
 
 # --- Main Visualizations Layer ---
 col1, col2 = st.columns(2, gap="large")
