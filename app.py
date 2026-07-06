@@ -21,9 +21,16 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- Header ---
-st.title("🌍 UN Human Development Report Intelligence")
-<p style="margin: 0; padding: 0; font-weight: bold; font-size: 1.1rem; margin-top: 5px; color: #334155;">Country Focus: Philippines (2005) | Data Extraction: Llama 3 | Evaluation: Mistral</p>
-st.divider()
+st.markdown("""
+<div style="display: flex; justify-content: center; align-items: center;">
+    <div style="font-size: 2.8rem; margin-right: 12px;">🌍</div>
+    <div>
+        <h1 style="margin: 0; padding: 0; font-weight: bold; line-height: 1.2;">UN Human Development Report Intelligence</h1>
+        <p style="margin: 0; padding: 0; font-weight: bold; font-size: 1.1rem; margin-top: 5px; color: #334155;">Country Focus: Philippines (2005) | Data Extraction: Llama 3 | Evaluation: Mistral</p>
+    </div>
+</div>
+<br>
+""", unsafe_allow_html=True)
 
 # --- Load Data ---
 @st.cache_data
